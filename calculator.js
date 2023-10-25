@@ -18,25 +18,41 @@ const clearBtn = document.querySelector("#clear-btn");
 const numberBtns = document.querySelectorAll(".number-btn");
 const operatorBtns = document.querySelectorAll(".operator-btn");
 
-let calcDisplayValueDigit; 
-
-let calcDisplayValue = []
+let calcDisplayValueDigit;
+let calcDisplayValue = [];
+let firstNum = [];
+let secondNum = [];
+let operator = [];
 
 
 numberBtns.forEach((numberBtn)=> 
     numberBtn.addEventListener("click", updateCalcDisplay));
 
+equalsBtn.addEventListener("click", (event)=>{
+
+});
+
+
 
 operatorBtns.forEach((operatorBtn)=> 
-    operatorBtn.addEventListener("click", updateCalcDisplay));
+    operatorBtn.addEventListener("click", (event)=>{
+        firstNum.push(...calcDisplayValue);
+        emptyCalcDisplayValue()
+        updateCalcDisplay(event)
+        operator.push(...calcDisplayValue);
+    })
+);
 
 
 function updateCalcDisplay(event){
     calcDisplayValueDigit = event.target.textContent;
     calcDisplayValue.push(calcDisplayValueDigit)
     calcDisplay.textContent = calcDisplayValue.join('')
-}
+};
 
+function emptyCalcDisplayValue(){
+    calcDisplayValue =[];
+}
 
 
 function operate(firstNum, secondNum, operator){
@@ -51,21 +67,20 @@ function operate(firstNum, secondNum, operator){
     }else{
         console.error("operate function operator variable logic error")
     }
-
-}
+};
 
 function add(a, b){
     return a += b;
-}
+};
 
 function subtract(a, b){
     return a -= b;
-}
+};
 
 function multiply(a, b){
     return a *= b;
-}
+};
 
 function divide(a, b){
     return a /= b;
-}
+};
