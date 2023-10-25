@@ -28,8 +28,10 @@ let operator = [];
 numberBtns.forEach((numberBtn)=> 
     numberBtn.addEventListener("click", updateCalcDisplay));
 
-equalsBtn.addEventListener("click", (event)=>{
-
+equalsBtn.addEventListener("click", ()=>{
+    secondNum.push(...calcDisplayValue);
+    emptyCalcDisplayValue();
+    console.log(operate(Number(firstNum), Number(secondNum), operator))
 });
 
 
@@ -40,7 +42,9 @@ operatorBtns.forEach((operatorBtn)=>
         emptyCalcDisplayValue()
         updateCalcDisplay(event)
         operator.push(...calcDisplayValue);
+        emptyCalcDisplayValue()
     })
+    
 );
 
 
@@ -68,6 +72,7 @@ function operate(firstNum, secondNum, operator){
         console.error("operate function operator variable logic error")
     }
 };
+
 
 function add(a, b){
     return a += b;
