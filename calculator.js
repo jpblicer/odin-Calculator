@@ -15,8 +15,35 @@ const divideBtn = document.querySelector("#divide-btn");
 const equalsBtn = document.querySelector("#equals-btn");
 const clearBtn = document.querySelector("#clear-btn");
 
+const numberBtns = document.querySelectorAll(".number-btn");
+const operatorBtns = document.querySelectorAll(".operator-btn");
+
+let calcDisplayValueDigit; 
 
 let calcDisplayValue = []
+
+
+numberBtns.forEach((numberBtn)=> 
+    numberBtn.addEventListener("click", (event)=>{
+        calcDisplayValueDigit = event.target.textContent;
+        calcDisplayValue.push(calcDisplayValueDigit)
+        console.log(calcDisplayValueDigit)
+        calcDisplay.textContent = calcDisplayValue.join('')
+    })
+);
+
+
+operatorBtns.forEach((operatorBtn)=> 
+    operatorBtn.addEventListener("click", (event)=>{
+        calcDisplayValueDigit = event.target.textContent;
+        calcDisplayValue.push(calcDisplayValueDigit)
+        console.log(calcDisplayValueDigit)
+        calcDisplay.textContent = calcDisplayValue.join('')
+    })
+);
+
+
+
 
 
 
