@@ -24,34 +24,18 @@ let calcDisplayValue = []
 
 
 numberBtns.forEach((numberBtn)=> 
-    numberBtn.addEventListener("click", (event)=>{
-        calcDisplayValueDigit = event.target.textContent;
-        calcDisplayValue.push(calcDisplayValueDigit)
-        console.log(calcDisplayValueDigit)
-        calcDisplay.textContent = calcDisplayValue.join('')
-    })
-);
+    numberBtn.addEventListener("click", updateCalcDisplay));
 
 
 operatorBtns.forEach((operatorBtn)=> 
-    operatorBtn.addEventListener("click", (event)=>{
-        calcDisplayValueDigit = event.target.textContent;
-        calcDisplayValue.push(calcDisplayValueDigit)
-        console.log(calcDisplayValueDigit)
-        calcDisplay.textContent = calcDisplayValue.join('')
-    })
-);
+    operatorBtn.addEventListener("click", updateCalcDisplay));
 
 
-
-
-
-
-
-const testOperator = "/";
-const testFirstNum = 3
-const testSecondNum = 5
-
+function updateCalcDisplay(event){
+    calcDisplayValueDigit = event.target.textContent;
+    calcDisplayValue.push(calcDisplayValueDigit)
+    calcDisplay.textContent = calcDisplayValue.join('')
+}
 
 
 
