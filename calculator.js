@@ -1,3 +1,15 @@
+/*
+readjust the variables and the logi
+maybe
+    display secondNum
+    upon hitting operations secondNum is moved to firstNum variable 
+    upon hitting equal the function is called and the result is put into firstNum and secondNum and operations are emptied
+    clear will empty out firstNum and secondNum and operations
+*/
+
+
+
+
 const calcDisplay = document.querySelector("#calc-display");
 const oneBtn = document.querySelector("#one-btn");
 const twoBtn = document.querySelector("#two-btn");
@@ -19,9 +31,8 @@ const numberBtns = document.querySelectorAll(".number-btn");
 const operatorBtns = document.querySelectorAll(".operator-btn");
 
 let calcDisplayValueDigit;
-let calcDisplayValue = [];
-let firstNum = [];
-let secondNum = [];
+let previousNum = [];
+let currentNum = [];
 let operator = [];
 
 
@@ -29,20 +40,20 @@ numberBtns.forEach((numberBtn)=>
     numberBtn.addEventListener("click", updateCalcDisplay));
 
 equalsBtn.addEventListener("click", ()=>{
-    secondNum.push(...calcDisplayValue);
-    emptyCalcDisplayValue();
-    console.log(operate(Number(firstNum), Number(secondNum), operator))
+    //c.push(...calcDisplayValue);
+    //emptycurrentNum();
+    console.log(operate(Number(previousNum), Number(currentNum), operator))
 });
 
 
 
 operatorBtns.forEach((operatorBtn)=> 
     operatorBtn.addEventListener("click", (event)=>{
-        firstNum.push(...calcDisplayValue);
-        emptyCalcDisplayValue()
+        previousNum.push(...currentNum);
+        emptycurrentNum();
         updateCalcDisplay(event)
-        operator.push(...calcDisplayValue);
-        emptyCalcDisplayValue()
+        operator.push(...currentNum);
+        emptycurrentNum()
     })
     
 );
@@ -50,12 +61,12 @@ operatorBtns.forEach((operatorBtn)=>
 
 function updateCalcDisplay(event){
     calcDisplayValueDigit = event.target.textContent;
-    calcDisplayValue.push(calcDisplayValueDigit)
-    calcDisplay.textContent = calcDisplayValue.join('')
+    currentNum.push(calcDisplayValueDigit)
+    calcDisplay.textContent = currentNum.join('')
 };
 
-function emptyCalcDisplayValue(){
-    calcDisplayValue =[];
+function emptycurrentNum(){
+    currentNum = [];
 }
 
 
