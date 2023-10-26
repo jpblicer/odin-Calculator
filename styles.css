@@ -13,8 +13,11 @@ body{
 }
 
 #calc-display{
+    width: 390.85px;
+    height: 101px;
     display: flex;
     border: solid;
+    align-items: center;
     border-color: black;
     font-size: 30px;
     flex-direction: row-reverse;
