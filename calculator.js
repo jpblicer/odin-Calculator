@@ -1,15 +1,3 @@
-/*
-readjust the variables and the logi
-maybe
-    display secondNum
-    upon hitting operations secondNum is moved to firstNum variable 
-    upon hitting equal the function is called and the result is put into firstNum and secondNum and operations are emptied
-    clear will empty out firstNum and secondNum and operations
-*/
-
-
-
-
 const calcDisplay = document.querySelector("#calc-display");
 const oneBtn = document.querySelector("#one-btn");
 const twoBtn = document.querySelector("#two-btn");
@@ -40,9 +28,11 @@ numberBtns.forEach((numberBtn)=>
     numberBtn.addEventListener("click", updateCalcDisplay));
 
 equalsBtn.addEventListener("click", ()=>{
-    //c.push(...calcDisplayValue);
-    //emptycurrentNum();
-    console.log(operate(Number(previousNum), Number(currentNum), operator))
+    currentNum.push(operate(Number(previousNum), Number(currentNum), operator))
+    currentNum.shift();
+    console.log(currentNum)
+    operator=[]
+    previousNum=[]
 });
 
 
