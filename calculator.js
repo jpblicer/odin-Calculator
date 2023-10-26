@@ -27,14 +27,14 @@ let operator = [];
 numberBtns.forEach((numberBtn)=> 
     numberBtn.addEventListener("click", updateCalcDisplay));
 
-equalsBtn.addEventListener("click", ()=>{
+
+equalsBtn.addEventListener("click", () => {
     currentNum.push(operate(Number(previousNum), Number(currentNum), operator))
     currentNum.shift();
     console.log(currentNum)
-    operator=[]
-    previousNum=[]
+    operator = [];
+    previousNum = [];
 });
-
 
 
 operatorBtns.forEach((operatorBtn)=> 
@@ -47,6 +47,14 @@ operatorBtns.forEach((operatorBtn)=>
     })
     
 );
+
+clearBtn.addEventListener("click",() => {
+    currentNum = [];
+    operator = [];
+    previousNum = [];
+    calcDisplay.textContent = ""
+})
+
 
 
 function updateCalcDisplay(event){
