@@ -37,5 +37,20 @@ button{
     display: flex;
     flex-wrap: nowrap;
     padding: 40px;
-    font-size: 14px;
+    font-size: 25px;
+}
+
+.operator-btn{
+    background-color: orange;
+    font-weight: bolder;
+}
+
+#equals-btn{
+    background-color: lightblue;
+    font-weight: bolder;
+}
+
+#clear-btn{
+    background-color: red;
+    font-weight: bolder;
 }
