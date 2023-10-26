@@ -29,16 +29,16 @@ numberBtns.forEach((numberBtn)=>
 
 
 equalsBtn.addEventListener("click", () => {
-    currentNum.push(operate(Number(previousNum), Number(currentNum), operator))
+    currentNum.push(operate(Number(previousNum.join(``)), Number(currentNum.join(``)), operator))
     currentNum.shift();
-    console.log(currentNum)
+    calcDisplay.textContent=currentNum;
     operator = [];
     previousNum = [];
 });
 
 
 operatorBtns.forEach((operatorBtn)=> 
-    operatorBtn.addEventListener("click", (event)=>{
+    operatorBtn.addEventListener("click", (event)=>{ 
         previousNum.push(...currentNum);
         emptycurrentNum();
         updateCalcDisplay(event)
@@ -47,6 +47,7 @@ operatorBtns.forEach((operatorBtn)=>
     })
     
 );
+
 
 clearBtn.addEventListener("click",() => {
     currentNum = [];
@@ -63,6 +64,7 @@ function updateCalcDisplay(event){
     calcDisplay.textContent = currentNum.join('')
 };
 
+
 function emptycurrentNum(){
     currentNum = [];
 }
@@ -78,7 +80,10 @@ function operate(firstNum, secondNum, operator){
     }else if(operator == "/"){
         return divide(firstNum, secondNum)
     }else{
-        console.error("operate function operator variable logic error")
+        calcDisplay.textContent = "error";
+        currentNum =[];
+        operator =[];
+        previousNum=[];
     }
 };
 
