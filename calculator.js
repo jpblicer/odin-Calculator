@@ -19,11 +19,18 @@ numberBtns.forEach((numberBtn)=>
 
 
 equalsBtn.addEventListener("click", () => {
+    if(currentNum.length < 1 || operator.length < 1 || previousNum.length < 1){
+        currentNum = [];
+        operator = [];
+        previousNum = [];
+        calcDisplay.textContent = ""
+    }else{
     currentNum.push(operate(Number(previousNum.join(``)), Number(currentNum.join(``)), operator))
     currentNum.shift();
     calcDisplay.textContent=currentNum;
     operator = [];
     previousNum = [];
+    }
 });
 
 
@@ -34,8 +41,7 @@ operatorBtns.forEach((operatorBtn)=>
         updateCalcDisplay(event)
         operator.push(...currentNum);
         emptycurrentNum()
-    })
-    
+    })    
 );
 
 
