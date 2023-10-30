@@ -17,41 +17,28 @@ let operator = [];
 numberBtns.forEach((numberBtn)=> 
     numberBtn.addEventListener("click", updateCalcDisplay));
 
+    
+clearBtn.addEventListener("click", clearCalcDisplay);
+
 
 equalsBtn.addEventListener("click", () => {
     if(currentNum.length < 1 || operator.length < 1 || previousNum.length < 1){
-        currentNum = [];
-        operator = [];
-        previousNum = [];
-        calcDisplay.textContent = ""
+        clearCalcDisplay()
     }else{
     currentNum.push(operate(Number(previousNum.join(``)), Number(currentNum.join(``)), operator))
     currentNum.shift();
     calcDisplay.textContent=currentNum;
     operator = [];
-    previousNum = [];
+    previousNum =[];
+    previousNum.push(...currentNum);
+    emptycurrentNum()
     }
 });
 
 
 operatorBtns.forEach((operatorBtn)=> 
-    operatorBtn.addEventListener("click", (event)=>{ 
-        previousNum.push(...currentNum);
-        emptycurrentNum();
-        updateCalcDisplay(event)
-        operator.push(...currentNum);
-        emptycurrentNum()
-    })    
+    operatorBtn.addEventListener("click", moveCurrentNumToPreviousNum)    
 );
-
-
-clearBtn.addEventListener("click",() => {
-    currentNum = [];
-    operator = [];
-    previousNum = [];
-    calcDisplay.textContent = ""
-})
-
 
 
 function updateCalcDisplay(event){
@@ -61,9 +48,27 @@ function updateCalcDisplay(event){
 };
 
 
+function moveCurrentNumToPreviousNum(event){
+    previousNum.push(...currentNum);
+    emptycurrentNum();
+    updateCalcDisplay(event)
+    operator.push(...currentNum);
+    emptycurrentNum()
+}
+
+
+function clearCalcDisplay(){
+    currentNum = [];
+    operator = [];
+    previousNum = [];
+    calcDisplay.textContent = ""
+}
+
+
 function emptycurrentNum(){
     currentNum = [];
 }
+
 
 
 function operate(firstNum, secondNum, operator){
